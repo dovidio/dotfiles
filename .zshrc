@@ -100,3 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/home/ubuntu/.cfg/ --work-tree=/home/ubuntu'
+alias e=emacs -nw
+alias inst=$HOME/.bootstrap-linux/install.sh
+alias clone=$HOME/.bootstrap-linux/clone.sh
