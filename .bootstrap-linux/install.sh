@@ -7,6 +7,7 @@ MAVEN=0
 LEIN=0
 EMACS=0
 UTILS=0
+IDEA=0
 
 # no arguments, then install all
 if [ "$#" == "0" ]; then
@@ -46,6 +47,10 @@ do
 	    UTILS=1
 	    shift #past argument
 	    ;;
+        --idea)
+            IDEA=1
+            shift #past argument
+            ;;
     esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
@@ -59,6 +64,7 @@ if [ "${HELP}" -eq 1 ]; then
     echo "  --lein                                                Install lein and add it to /usr/bin"
     echo "  --emacs                                               Install emacs"
     echo "  --utils                                               Install utilities that why the hell are those not even installed by default"
+    echo "  --idea                                                Install intellij idea"
     exit 0
 fi
 
@@ -68,6 +74,7 @@ if [ "${ALL}" -eq 1 ]; then
     LEIN=1
     EMACS=1
     UTILS=1
+    IDEA=1
 fi
 
 PREINSTALL() {
@@ -110,6 +117,17 @@ fi
 if [ "${UTILS}" -eq 1 ]; then
     PREINSTALL "unzip"
     sudo apt install unzip -y
+    sudo apt install libgbm1 -y # needed for running intellij idea in wsl2
     POSTINSTALL "unzip"
 fi
 
+if [ "${IDEA}" -eq 1 ]; then
+    PREINSTALL "Intellij IDEA"
+    wget https://download-cdn.jetbrains.com/idea/ideaIU-2021.2.3.tar.gz
+    tar -xzf idea*.tar.gz
+    mv idea* idea
+    sudo mv idea /opt
+    cd $HOME/.bootstrap-linux
+    sudo desktop-file-install jetbrains-idea.desktop
+    POSTINSTALL "Intellij IDEA"
+fi
