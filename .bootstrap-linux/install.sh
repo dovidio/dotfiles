@@ -125,9 +125,8 @@ if [ "${IDEA}" -eq 1 ]; then
     PREINSTALL "Intellij IDEA"
     wget https://download-cdn.jetbrains.com/idea/ideaIU-2021.2.3.tar.gz
     tar -xzf idea*.tar.gz
+    rm idea*.tar.gz
     mv idea* idea
     sudo mv idea /opt
-    cd $HOME/.bootstrap-linux
-    sudo desktop-file-install jetbrains-idea.desktop
     POSTINSTALL "Intellij IDEA"
 fi
