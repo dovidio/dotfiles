@@ -8,6 +8,8 @@ LEIN=0
 EMACS=0
 UTILS=0
 IDEA=0
+ORIENTDB=0
+ORIENTDBVERSION="3.2.2"
 
 # no arguments, then install all
 if [ "$#" == "0" ]; then
@@ -51,6 +53,10 @@ do
             IDEA=1
             shift #past argument
             ;;
+    --orientdb)
+        ORIENTDB=1
+        shift #past argument
+        ;;
     esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
@@ -75,6 +81,7 @@ if [ "${ALL}" -eq 1 ]; then
     EMACS=1
     UTILS=1
     IDEA=1
+    ORIENTDB=1
 fi
 
 PREINSTALL() {
@@ -129,4 +136,14 @@ if [ "${IDEA}" -eq 1 ]; then
     mv idea* idea
     sudo mv idea /opt
     POSTINSTALL "Intellij IDEA"
+fi
+
+if [ "${ORIENTDB}" -eq 1 ]; then
+    PREINSTALL "OrientDB"
+    wget https://s3.us-east-2.amazonaws.com/orientdb3/releases/$ORIENTDBVERSION/orientdb-$ORIENTDBVERSION.tar.gz
+    tar -xzf orient*.tar.gz
+    rm orient*.tar.gz
+    mv orient* orientdb
+    sudo mv orientdb /opt/orientdb
+    POSTINSTALL "OrientDB"
 fi
