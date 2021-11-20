@@ -8,8 +8,11 @@ LEIN=0
 EMACS=0
 UTILS=0
 IDEA=0
+VISUALCODE=0
 ORIENTDB=0
 ORIENTDBVERSION="3.2.2"
+ZSH=0
+CHROME=0
 
 # no arguments, then install all
 if [ "$#" == "0" ]; then
@@ -49,14 +52,25 @@ do
 	    UTILS=1
 	    shift #past argument
 	    ;;
-        --idea)
-            IDEA=1
-            shift #past argument
-            ;;
+    --idea)
+        IDEA=1
+        shift #past argument
+        ;;
     --orientdb)
         ORIENTDB=1
         shift #past argument
         ;;
+    --visualcode)
+        VISUALCODE=1
+        shift # past argument
+        ;;
+    --zsh)
+        ZSH=1;
+        shift # past argument
+        ;;
+    --chrome)
+        CHROME=1
+        shift # past argument
     esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
@@ -71,6 +85,10 @@ if [ "${HELP}" -eq 1 ]; then
     echo "  --emacs                                               Install emacs"
     echo "  --utils                                               Install utilities that why the hell are those not even installed by default"
     echo "  --idea                                                Install intellij idea"
+    echo "  --orientdb                                            Install OrientDB"
+    echo "  --visualcode                                          Install Visual Studio Code"
+    echo "  --zsh                                                 Install zsh and oh-my-zsh"
+    echo "  --chrome                                              Install Google Chrome"
     exit 0
 fi
 
@@ -82,6 +100,9 @@ if [ "${ALL}" -eq 1 ]; then
     UTILS=1
     IDEA=1
     ORIENTDB=1
+    VISUALCODE=1
+    ZSH=1
+    CHROME=1
 fi
 
 PREINSTALL() {
@@ -125,6 +146,8 @@ if [ "${UTILS}" -eq 1 ]; then
     PREINSTALL "unzip"
     sudo apt install unzip -y
     sudo apt install libgbm1 -y # needed for running intellij idea in wsl2
+    sudo apt install curl -y # debian doesn't have it lol
+    sudo apt install jq -y
     POSTINSTALL "unzip"
 fi
 
@@ -146,4 +169,32 @@ if [ "${ORIENTDB}" -eq 1 ]; then
     mv orient* orientdb
     sudo mv orientdb /opt/orientdb
     POSTINSTALL "OrientDB"
+fi
+
+if [ "${VISUALCODE}" -eq 1 ]; then
+  PREINSTALL "Visual Studio Code"
+  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+  sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+  sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+  rm -f packages.microsoft.gpg
+  sudo apt install apt-transport-https
+  sudo apt update
+  sudo apt install code
+  POSTINSTALL "Visual Studio Code"
+fi
+
+if [ "${ZSH}" -eq 1 ]; then
+  PREINSTALL "zsh"
+  sudo apt install zsh -y
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  POSTINSTALL "zsh"
+fi
+
+if [ "${CHROME}" -eq 1 ]; then
+  PREINSTALL "chrome"
+  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+  sudo apt-get update 
+  sudo apt-get install google-chrome-stable -y
+  POSTINSTALL "chrome"
 fi

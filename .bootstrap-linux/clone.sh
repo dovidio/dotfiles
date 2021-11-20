@@ -13,9 +13,15 @@ function create_if_not_exists() {
 create_if_not_exists ~/workspace
 
 cd ~/workspace
-git clone git@github.com:jepsen-io/jepsen.git
-git clone git@github.com:gentics/mesh.git
 
-create_if_not_exists dovidio
-cd dovidio
-curl "https://api.github.com/users/dovidio/repos?access_token=$1" | grep -w clone_url
+if [[ ! -d jepsen ]]; then 
+    git clone git@github.com:jepsen-io/jepsen.git
+fi
+
+if [[ ! -d mesh ]]; then 
+    git clone git@github.com:gentics/mesh.git
+fi
+
+create_if_not_exists ~/workspace/dovidio
+cd ~/workspace/dovidio
+curl -H "Authorization: $1" https://api.github.com/users/dovidio/repos | jq '.[] | select(.fork == false) | .clone_url' | xargs -n1 git clone
