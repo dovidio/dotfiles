@@ -1,0 +1,38 @@
+# Colino configuration
+rss:
+  feeds:
+    - https://hnrss.org/frontpage # hacker news
+    - https://www.seangoedecke.com/rss.xml # sean goedecke, engineering cultural shift
+    - https://antirez.com/rss # redis creator
+    - https://mitchellh.com/feed.xml # hashicorp founder, ghosty creator
+    - https://jvns.ca/atom.xml # zines, system/infra deep dives
+    - https://karpathy.bearblog.dev/feed/ # ai
+    - https://simonwillison.net/atom/everything/ # simon willison - python, ai, django
+    - https://www.youtube.com/feeds/videos.xml?channel_id=UC-yuWVUplUJZvieEligKBkA  # YouTube: javidx9
+    - https://go.dev/blog/feed.atom  # temp test
+    - https://feeds.feedburner.com/martinkl # distributed systems
+    - https://research.swtch.com/feed.atom # russ cox, system programming (go and plan9)
+youtube:
+  proxy:
+    enabled: true
+    webshare:
+      username: {{ keyring "webshare" "username" }}
+      password: {{ keyring "webshare" "password" }}
+database:
+  path: ~/Library/Application Support/colino/colino.db
+
+ai:
+  base_url: https://openrouter.ai/api/v1
+  model: meta-llama/llama-3.3-70b-instruct:free
+  article_prompt: |
+    You are an expert news curator and summarizer.
+    Create an insightful summary of the article content below.
+    The content can come from news articles, youtube videos transcripts or blog posts.
+    Format your response in clean markdown with headers and bullet points if required.
+
+    ## Article {{ "{{" }} .Title {{ "}}" }}
+    **Source:** {{ "{{" }} .Source {{ "}}" }} | **Published:** {{ "{{" }} .Published {{ "}}" }}
+    **URL:** {{ "{{" }} .Url {{ "}}" }}
+
+    **Content:**
+    {{ "{{" }} .Content {{ "}}" }}
