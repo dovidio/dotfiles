@@ -17,8 +17,8 @@ youtube:
   proxy:
     enabled: true
     webshare:
-      username: {{ keyring "webshare" "username" }}
-      password: {{ keyring "webshare" "password" }}
+      username: {{ onepasswordRead "op://chezmoi/chezmoi_webshare_username/password" }}
+      password: {{ onepasswordRead "op://chezmoi/chezmoi_webshare_password/password" }}
 database:
   path: ~/Library/Application Support/colino/colino.db
 
