@@ -25,7 +25,6 @@ source "$HOME/.bash_profile";
 
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-eval "$(~/.local/bin/mise activate)"
 export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
