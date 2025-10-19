@@ -1,0 +1,16 @@
+(
+    tab: 0,
+    diff: (
+        ignore_whitespace: false,
+        context: 3,
+        interhunk_lines: 0,
+    ),
+    status_show_untracked: None,
+    commit_msgs: [
+        "Add rubocop formatting and erb formatting for ruby",
+        "add copilot",
+        "enable relative line numbers",
+        "catppuccin",
+        "enable clang formatting and c+php debugging",
+    ],
+)

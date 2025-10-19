@@ -1,0 +1,12 @@
+0000000000000000000000000000000000000000 f33513dfc7cd27954bb708b419b47f3dfced590d Umberto D'Ovidio <umberto.dovidio@gmail.com> 1737210834 +0100	clone: from github.com:dovidio/nvim.git
+f33513dfc7cd27954bb708b419b47f3dfced590d dfc28ea2c1caa78885d35f0e39ff13588b023755 Umberto D'Ovidio <umberto.dovidio@gmail.com> 1737278906 +0100	commit: Add rubocop formatting and erb formatting for ruby
+dfc28ea2c1caa78885d35f0e39ff13588b023755 6c62893d1ac3bc6befe3c83997a9525eb6ad39fc Umberto D'Ovidio <umberto.dovidio@gmail.com> 1737662321 +0100	commit: add copilot
+6c62893d1ac3bc6befe3c83997a9525eb6ad39fc 8eb113457e35a541e72ab2a868ddbef5b52ca302 Umberto D'Ovidio <umberto.dovidio@gmail.com> 1737662340 +0100	pull --rebase (start): checkout 8eb113457e35a541e72ab2a868ddbef5b52ca302
+8eb113457e35a541e72ab2a868ddbef5b52ca302 8b1cfb88f1352cb4b760bfb0a4cf4bed06b0a946 Umberto D'Ovidio <umberto.dovidio@gmail.com> 1737662340 +0100	pull --rebase (pick): add copilot
+8b1cfb88f1352cb4b760bfb0a4cf4bed06b0a946 8b1cfb88f1352cb4b760bfb0a4cf4bed06b0a946 Umberto D'Ovidio <umberto.dovidio@gmail.com> 1737662340 +0100	pull --rebase (finish): returning to refs/heads/master
+8b1cfb88f1352cb4b760bfb0a4cf4bed06b0a946 de079f3b2165bc1788a5ec8bbaffdcdc1510cde4 Umberto D'Ovidio <umberto.dovidio@gmail.com> 1737747362 +0100	commit: enable relative line numbers
+de079f3b2165bc1788a5ec8bbaffdcdc1510cde4 2e67c2dfc93d2b5aa22e2bae5ec03ef598f4329e Umberto D'Ovidio <umberto.dovidio@gmail.com> 1737960444 +0100	commit: catppuccin
+2e67c2dfc93d2b5aa22e2bae5ec03ef598f4329e cfed140a8be23dfa933605bddc6fea2b19c6936a Umberto D'Ovidio <umberto.dovidio@gmail.com> 1742827384 +0100	commit: enable clang formatting and c+php debugging
+cfed140a8be23dfa933605bddc6fea2b19c6936a 221334ad7ef688b746b665f6fcef1d4a49ff2ef5 Umberto D'Ovidio <umberto.dovidio@gmail.com> 1742828531 +0100	pull --rebase origin master (start): checkout 221334ad7ef688b746b665f6fcef1d4a49ff2ef5
+221334ad7ef688b746b665f6fcef1d4a49ff2ef5 74bef9f9d60a2826becb1b5e0c8a8692e74e6684 Umberto D'Ovidio <umberto.dovidio@gmail.com> 1742828531 +0100	pull --rebase origin master (pick): enable clang formatting and c+php debugging
+74bef9f9d60a2826becb1b5e0c8a8692e74e6684 74bef9f9d60a2826becb1b5e0c8a8692e74e6684 Umberto D'Ovidio <umberto.dovidio@gmail.com> 1742828531 +0100	pull --rebase origin master (finish): returning to refs/heads/master
