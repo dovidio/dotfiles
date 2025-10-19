@@ -12,6 +12,7 @@ rss:
     - https://go.dev/blog/feed.atom  # temp test
     - https://feeds.feedburner.com/martinkl # distributed systems
     - https://research.swtch.com/feed.atom # russ cox, system programming (go and plan9)
+    - https://commandcenter.blogspot.com/index.xml # rob pike
 youtube:
   proxy:
     enabled: true
@@ -30,9 +31,10 @@ ai:
     The content can come from news articles, youtube videos transcripts or blog posts.
     Format your response in clean markdown with headers and bullet points if required.
 
-    ## Article {{ "{{" }} .Title {{ "}}" }}
-    **Source:** {{ "{{" }} .Source {{ "}}" }} | **Published:** {{ "{{" }} .Published {{ "}}" }}
-    **URL:** {{ "{{" }} .Url {{ "}}" }}
+    ## Article {{ "{{" }}.Title{{ "}}" }}
+    **Source:** {{ "{{" }}.Source{{ "}}" }} | **Published:** {{ "{{" }}.Published{{ "}}" }}
+    **URL:** {{ "{{" }}.Url{{ "}}" }}
 
     **Content:**
-    {{ "{{" }} .Content {{ "}}" }}
+    {{ "{{" }}.Content{{ "}}" }}
+
