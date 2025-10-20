@@ -35,3 +35,10 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="/nix/var/nix/profiles/default/bin:$PATH"
 # Homebrew
 export PATH="/opt/homebrew/bin:$PATH"  # For Apple Silicon (M1/M2/M3
+
+{{ if eq .chezmoi.hostname "Mac"}}
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/umberto.dovidio/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+{{ end }}
+
