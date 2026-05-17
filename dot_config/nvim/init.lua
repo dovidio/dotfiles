@@ -483,9 +483,6 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 
-			local mason_registry = require("mason-registry")
-			local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-				.. "/node_modules/@vue/language-server"
 			local servers = {
 				clangd = {
 					cmd = {
@@ -506,20 +503,9 @@ require("lazy").setup({
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				ts_ls = {
-					init_options = {
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = vue_language_server_path,
-								languages = { "vue" },
-							},
-						},
-					},
-					filetypes = { "typescript", "javascript", "vue" },
+					init_options = {},
+					filetypes = { "typescript", "javascript" },
 				},
-
-				volar = {},
-				--
 
 				lua_ls = {
 					-- cmd = { ... },
@@ -634,9 +620,6 @@ require("lazy").setup({
 			},
 		},
 	},
-	--{ let's disable it, is getting annoying
-	--  'github/copilot.vim',
-	--},
 	{ -- Autocompletion
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -822,7 +805,6 @@ require("lazy").setup({
 				"markdown",
 				"markdown_inline",
 				"query",
-				"php",
 				"vim",
 				"vimdoc",
 				"java",
@@ -878,21 +860,7 @@ require("lazy").setup({
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
 		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-		icons = vim.g.have_nerd_font and {} or {
-			cmd = "⌘",
-			config = "🛠",
-			event = "📅",
-			ft = "📂",
-			init = "⚙",
-			keys = "🗝",
-			plugin = "🔌",
-			runtime = "💻",
-			require = "🌙",
-			source = "📄",
-			start = "🚀",
-			task = "📌",
-			lazy = "💤 ",
-		},
+		icons = vim.g.have_nerd_font and {},
 	},
 })
 

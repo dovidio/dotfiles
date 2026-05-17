@@ -25,8 +25,8 @@ source "$HOME/.bash_profile";
 
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 [[ -f ~/.zshrc.secrets ]] && source ~/.zshrc.secrets
@@ -34,11 +34,7 @@ export PATH="$HOME/go/bin:$PATH"
 # Nix
 export PATH="/nix/var/nix/profiles/default/bin:$PATH"
 # Homebrew
-export PATH="/opt/homebrew/bin:$PATH"  # For Apple Silicon (M1/M2/M3
+export PATH="/opt/homebrew/bin:$PATH"  # For Apple Silicon
 
-{{ if eq .chezmoi.hostname "Mac"}}
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/umberto.dovidio/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-{{ end }}
-
+# depot_tools, chrome
+export PATH="$PATH:/Users/umbertodovidio/hack/depot_tools"

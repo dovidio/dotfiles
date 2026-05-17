@@ -4,9 +4,8 @@
 		"snippets": [
 			{
 				"language": [
-					"php"
 				],
-				"path": "./php.json"
+				"path": ""
 			}
 		]
 	}
